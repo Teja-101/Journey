@@ -3,40 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Shopping Cart</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+        .is-invalid .invalid-feedback {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="catalog.html">Catalog</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <h1>Register</h1>
-        <form>
-            <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Register</button>
+    <div class="container">
+        <h2 class="text-center">Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                <div class="invalid-feedback">Please enter a password.</div>
+            </div>
+            <div class="form-group">
+                <label>Gender</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="invalid-feedback d-block">Please select your gender.</div>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select class="form-control" id="location" required>
+                    <option value="" selected disabled>Select your location</option>
+                    <option value="newyork">New York</option>
+                    <option value="losangeles">Los Angeles</option>
+                    <option value="chicago">Chicago</option>
+                    <option value="houston">Houston</option>
+                </select>
+                <div class="invalid-feedback">Please select your location.</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
         </form>
-    </main>
-    
+    </div>
 
-    <footer>
-        &copy; 2024 Shopping Cart App
-    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("registrationForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                var formIsValid = true;
+
+                var name = document.getElementById("name");
+                var email = document.getElementById("email");
+                var password = document.getElementById("password");
+                var genderMale = document.getElementById("male");
+                var genderFemale = document.getElementById("female");
+                var location = document.getElementById("location");
+
+                if (name.value.trim() === "") {
+                    name.classList.add("is-invalid");
+                    formIsValid = false;
+                } else {
+                    name.classList.remove("is-invalid");
+                }
+
+                if (email.value.trim() === "" || !email.value.includes("@")) {
+                    email.classList.add("is-invalid");
+                    formIsValid = false;
+                } else {
+                    email.classList.remove("is-invalid");
+                }
+
+                if (password.value.trim() === "") {
+                    password.classList.add("is-invalid");
+                    formIsValid = false;
+                } else {
+                    password.classList.remove("is-invalid");
+                }
+
+                if (!genderMale.checked && !genderFemale.checked) {
+                    genderMale.classList.add("is-invalid");
+                    genderFemale.classList.add("is-invalid");
+                    formIsValid = false;
+                } else {
+                    genderMale.classList.remove("is-invalid");
+                    genderFemale.classList.remove("is-invalid");
+                }
+
+                if (location.value === "") {
+                    location.classList.add("is-invalid");
+                    formIsValid = false;
+                } else {
+                    location.classList.remove("is-invalid");
+                }
+
+                if (formIsValid) {
+                    alert("Registration successful!");
+                    // Add actual registration logic here
+                }
+            });
+        });
+    </script>
 </body>
 </html>
