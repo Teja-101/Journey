@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 400px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                <div class="invalid-feedback">Please enter your username.</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <a href="#" id="resetPasswordLink" class="btn btn-link">Forgot Password?</a>
+        </form>
+    </div>
+
+    <div class="container" id="resetPasswordContainer" style="display:none;">
+        <h2 class="text-center">Reset Password</h2>
+        <form id="resetPasswordForm">
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" class="form-control" id="newPassword" placeholder="Enter new password" required>
+                <div class="invalid-feedback">Please enter a new password.</div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password" required>
+                <div class="invalid-feedback">Please confirm your new password.</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("resetPasswordLink").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("resetPasswordContainer").style.display = "block";
+        });
+    
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username");
+            var password = document.getElementById("password");
+    
+            if (username.value.trim() === "") {
+                username.classList.add("is-invalid");
+            } else {
+                username.classList.remove("is-invalid");
+            }
+    
+            if (password.value.trim() === "") {
+                password.classList.add("is-invalid");
+            } else {
+                password.classList.remove("is-invalid");
+            }
+    
+            if (username.value.trim() !== "" && password.value.trim() !== "") {
+                alert("Login successful!");
+                // Add actual login logic here
+            }
+        });
+    
+        document.getElementById("resetPasswordForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var newPassword = document.getElementById("newPassword");
+            var confirmPassword = document.getElementById("confirmPassword");
+    
+            if (newPassword.value.trim() === "") {
+                newPassword.classList.add("is-invalid");
+            } else {
+                newPassword.classList.remove("is-invalid");
+            }
+    
+            if (confirmPassword.value.trim() === "") {
+                confirmPassword.classList.add("is-invalid");
+            } else {
+                confirmPassword.classList.remove("is-invalid");
+            }
+    
+            if (newPassword.value.trim() !== "" && confirmPassword.value.trim() !== "") {
+                if (newPassword.value !== confirmPassword.value) {
+                    alert("Passwords do not match!");
+                } else {
+                    alert("Password successfully reset!");
+                    document.getElementById("resetPasswordContainer").style.display = "none";
+                    document.getElementById("loginForm").style.display = "block";
+                }
+            }
+        });
+    });
+    </script>
+    
+</body>
+</html>
+
