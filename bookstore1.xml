@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<bookstore1
+xmlns="C:/Users/Lenovo/Desktop/Journey/WebDevelopment/bookstore1.xml"
+xmlns:xsi="C:/Users/Lenovo/Desktop/Journey/WebDevelopment/bookstore1.xml"
+xsi:schemaLocation="C:/Users/Lenovo/Desktop/Journey/WebDevelopment/bookstore1.xml">
+           
+<bookname>wings of fire</bookname>
+<author>apj abdul</author>
+<price>500</price>
+</bookstore1>
