@@ -1,0 +1,11 @@
+<?xml version="1.0"?>  
+<employee  
+xmlns="C:/Users/pramo/OneDrive/Desktop/SDC lab/employee.xml"  
+xmlns:xsi="C:/Users/pramo/OneDrive/Desktop/SDC lab/employee.xml"  
+xsi:schemaLocation="C:/Users/pramo/OneDrive/Desktop/SDC lab/employee.xml">  
+  
+  <firstname>vimal</firstname>  
+  <lastname>jaiswal</lastname>  
+  <email>vimal@javatpoint.com</email>  
+  <number>7670926707</number>
+</employee>
